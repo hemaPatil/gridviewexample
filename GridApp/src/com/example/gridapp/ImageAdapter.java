@@ -5,6 +5,9 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
@@ -16,7 +19,7 @@ public class ImageAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return mThubIds.length;
 	}
 
 	@Override
@@ -32,15 +35,29 @@ public class ImageAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int arg0, View arg1, ViewGroup arg2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-		public Integer[] mThubIds ={
-				R.drawable.sample_0,
-				
-		}; 
+	public View getView(int position, View convertview, ViewGroup parent) {
 		
+		ImageView imageview;
+		
+		if(convertview == null)
+		{
+			 imageview =new ImageView(mContext);
+			 imageview.setLayoutParams(new GridView.LayoutParams(150,150));
+			 imageview.setScaleType(ScaleType.CENTER_CROP);
+             imageview.setPadding(5,5,5,5);
+		} 
+		else{
+			imageview= (ImageView) convertview;
+			}
+		imageview.setImageResource(mThubIds[position]);
+		return imageview;
+		
+		
+			}
+		public Integer[] mThubIds ={
+				R.drawable.sample_0,R.drawable.sample_1,
+				R.drawable.sample_3,R.drawable.sample_4,
+				R.drawable.sample_5,R.drawable.sample_6};
 		
 
 }
