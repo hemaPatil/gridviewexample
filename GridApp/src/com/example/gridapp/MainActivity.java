@@ -2,6 +2,7 @@ package com.example.gridapp;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,8 +22,10 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v, int position,
 					long id) {
-				// TODO Auto-generated method stub
 				
+				Intent i= new Intent(MainActivity.this,SingleViewActivity.class);
+				i.putExtra("id", position);
+				startActivity(i);
 			}
 		});
         
